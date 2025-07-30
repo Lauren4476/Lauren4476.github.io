@@ -1,13 +1,13 @@
 ---
 permalink: /
-title: "Hi, I'm Lauren!"
+title: "About"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-Welcome to my website! This website is powered by the 
+Hi, I'm Lauren - welcome to my website! This website is powered by the 
 [Academic Pages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages. 
 
 
