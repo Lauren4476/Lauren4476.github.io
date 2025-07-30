@@ -7,7 +7,9 @@ redirect_from:
   - /about.html
 ---
 
-Hi, I'm Lauren - welcome to my website! This website is powered by the 
+Hi, I'm Lauren! I'm a first-year PhD student at the Max Planck Institute for Extraterrestrial Physics in Munich. Before this I got my integrated Master's at the University of Cambridge.
+
+This website is powered by the 
 [Academic Pages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages. 
 
 
