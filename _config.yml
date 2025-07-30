@@ -25,9 +25,9 @@ author:
   avatar           : "profile_lauren_sq.jpg"
   name             : "Lauren Mason"
   pronouns         : "she/her"  
-  bio              : "I am a first-year PhD student at MPE, under the supervision of Dr. Jaime Pineda. I am interested in the physical and chemical processes involved in star and planet formation."
+  bio              : "PhD student at Max Planck Institute for Extraterrestrial Physics (MPE)."
   location         : "Munich, Germany"
-  employer         : "MPE"
+  employer         : # "MPE"
   uri              : # URL
   email            : "lauren.mason2010@hotmail.co.uk" 
 
