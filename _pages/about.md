@@ -12,7 +12,7 @@ Hi, I'm Lauren! I'm a first-year PhD student at the Max Planck Institute for Ext
 Projects I am involved in
 =====
 
-[PRODIGE](https://noema-prodige.github.io/), a survey of 32 Class 0/I protostars in the Perseus molecular cloud, and 8 Class II protoplanetary disks in the Taurus molecular cloud.
+- [PRODIGE](https://noema-prodige.github.io/), a survey of 32 Class 0/I protostars in the Perseus molecular cloud, and 8 Class II protoplanetary disks in the Taurus molecular cloud.
 
 
 ---
