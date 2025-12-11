@@ -2,9 +2,9 @@
 layout: page
 title: "Gallery"
 permalink: /gallery/
+author_profile: True
+output: True
 ---
-
-<h2>Trips</h2>
 
 <div class="trip-card-grid">
 

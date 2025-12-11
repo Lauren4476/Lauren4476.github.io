@@ -1,0 +1,56 @@
+
+/* --- Photo Gallery Styles --- */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, max-content));
+  gap: 15px;
+  margin-top: 20px;
+  justify-content: start;  /* keeps images aligned */
+}
+
+.gallery-grid img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+
+/* --- Trip Card Grid (Photos main page) --- */
+
+.trip-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.trip-card {
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.trip-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.trip-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.trip-card-title {
+  padding: 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: #fff;
+  text-align: center;
+}
+
