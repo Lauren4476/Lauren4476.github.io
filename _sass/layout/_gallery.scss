@@ -7,11 +7,18 @@
 
 .gallery img {
   display: block;
-  margin: 15px auto;   /* space between images and centered */
-  width: auto;         /* natural width */
-  height: auto;        /* natural height */
-  max-width: 100%;     /* never overflow container */
+  margin: 15px auto;   /* space between images and center them */
+  width: 50%;          /* half size on desktop */
+  height: auto;        /* keep aspect ratio */
   border-radius: 8px;
+  max-width: 100%;     /* never overflow container */
+}
+
+/* Mobile: full width images */
+@media (max-width: 768px) {
+  .gallery img {
+    width: 100%;       /* full width on small screens */
+  }
 }
 
 

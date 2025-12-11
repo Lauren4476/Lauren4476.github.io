@@ -6,6 +6,8 @@ author_profile: True
 output: True
 ---
 
+<p>A selection of pictures from my travels.</p>
+
 <div class="trip-card-grid">
 
   <a class="trip-card" href="/gallery/30m/">
