@@ -1,19 +1,19 @@
+/* --- Simple Vertical Gallery --- */
 
-/* --- Photo Gallery Styles --- */
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(50px, max-content));
-  gap: 15px;
+.gallery {
+  display: block;
   margin-top: 20px;
-  justify-content: start;  /* keeps images aligned */
 }
 
-.gallery-grid img {
-  max-width: 100%;
-  height: auto;
+.gallery img {
+  display: block;
+  margin: 15px auto;   /* space between images and centered */
+  width: auto;         /* natural width */
+  height: auto;        /* natural height */
+  max-width: 100%;     /* never overflow container */
   border-radius: 8px;
 }
+
 
 
 /* --- Trip Card Grid (Photos main page) --- */
