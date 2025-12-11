@@ -13,12 +13,12 @@ I'm a first-year PhD student at the [Centre for Astrochemical Studies](https://w
 
 I'm currently working in [PRODIGE](https://noema-prodige.github.io/), a survey of 32 Class 0/I protostars in the Perseus molecular cloud, and 8 Class II protoplanetary disks in the Taurus molecular cloud.
 
-*Feel free to get in touch :)*
+Feel free to get in touch :)
 
 
 ---
 
-This website is powered by the 
-[Academic Pages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages. 
+*This website is powered by the 
+[Academic Pages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages. *
 
 
