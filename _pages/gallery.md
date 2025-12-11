@@ -6,15 +6,18 @@ author_profile: True
 output: True
 ---
 
-<p>A selection of pictures from my travels.</p>
+<div class="page-container">
 
-<div class="trip-card-grid">
+  <p>A selection of pictures from my travels.</p>
 
-  <a class="trip-card" href="/gallery/30m/">
-    <img src="/images/gallery/30m/cover.jpeg" alt="30m">
-    <div class="trip-card-title">IRAM 30m Telescope</div>
-  </a>
+  <div class="trip-card-grid">
 
+    <a class="trip-card" href="/gallery/30m/">
+      <img src="/images/gallery/30m/cover.jpeg" alt="30m">
+      <div class="trip-card-title">IRAM 30m Telescope</div>
+    </a>
 
+  </div>
 
 </div>
+
