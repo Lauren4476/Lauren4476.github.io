@@ -25,6 +25,11 @@ var addressPoints = [
     -3.5995337
   ],
   [
+    "Summer School: From the ISM to the formation of stars 2026<br />L'\u00c9cole de Physique des Houches; Les Houches, France",
+    45.1917,
+    5.7673
+  ],
+  [
     "BA and MSci in Natural Sciences (Astrophysics)<br />University of Cambridge; Cambridge, UK",
     52.1975846,
     0.1391537
