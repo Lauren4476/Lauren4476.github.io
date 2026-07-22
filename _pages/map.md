@@ -6,7 +6,7 @@ author_profile: True
 output: True
 ---
 
-<p>Universities, jobs, conferences, and research visits from my academic career.</p>
+<p>Universities, conferences, schools, and institutes I've been to during my academic career.</p>
 
 <div id="academic-map" style="height: 600px; width: 100%;"></div>
 

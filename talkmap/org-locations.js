@@ -1,8 +1,8 @@
 var addressPoints = [
   [
-    "Planet Formation across various Environments and Epochs Conference 2026<br />Munich Institute for Astro-, Particle and BioPhysics; Garching, Germany",
-    48.2513878,
-    11.6509662
+    "Planet Formation across various Environments and Epochs Conference 2026<br />Munich Institute for Astro-, Particle and BioPhysics; Garching Forschungszentrum, Germany",
+    48.2647408,
+    11.6714052
   ],
   [
     "CAS Group Retreat 2026<br />Schloss Ringberg; Tegernsee, Germany",
@@ -15,9 +15,9 @@ var addressPoints = [
     -3.3927
   ],
   [
-    "PhD at MPE<br />Max-Planck-Institut f\u00fcr Extraterrestrische Physik; Garching, Germany",
-    48.2513878,
-    11.6509662
+    "PhD at MPE<br />Max-Planck-Institut f\u00fcr Extraterrestrische Physik; Garching Forschungszentrum, Germany",
+    48.2647408,
+    11.6714052
   ],
   [
     "IRAM 30m school 2025<br />Granada; Granada, Spain",
