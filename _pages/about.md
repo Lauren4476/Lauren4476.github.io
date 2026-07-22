@@ -20,7 +20,4 @@ Feel free to get in touch :)
 
 ---
 
-*This website is powered by the 
-[Academic Pages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages.*
-
 
