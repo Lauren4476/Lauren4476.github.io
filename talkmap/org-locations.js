@@ -1,22 +1,32 @@
 var addressPoints = [
   [
-    "Talk 2 on Relevant Topic in Your Field<br />London School of Testing; London, UK",
-    51.4893335,
-    -0.14405508452768728
+    "Planet Formation across various Environments and Epochs Conference 2026<br />Munich Institute for Astro-, Particle and BioPhysics; Garching, Germany",
+    48.2513878,
+    11.6509662
   ],
   [
-    "Tutorial 1 on Relevant Topic in Your Field<br />UC-Berkeley Institute for Testing Science; Berkeley, CA, USA",
-    37.8708393,
-    -122.272863
+    "CAS Group Retreat 2026<br />Schloss Ringberg; Tegernsee, Germany",
+    47.7099191,
+    11.7543337
   ],
   [
-    "Conference Proceeding talk 3 on Relevant Topic in Your Field<br />Testing Institute of America 2014 Annual Conference; Los Angeles, CA, USA",
-    34.0536909,
-    -118.242766
+    "Observations at IRAM 30m<br />IRAM 30m Telescope; Pico Veleta, Sierra Nevada, Spain",
+    37.0662,
+    -3.3927
   ],
   [
-    "Talk 1 on Relevant Topic in Your Field<br />UC San Francisco, Department of Testing; San Francisco, CA, USA",
-    37.7792588,
-    -122.4193286
+    "PhD at MPE<br />Max-Planck-Institut f\u00fcr Extraterrestrische Physik; Garching, Germany",
+    48.2513878,
+    11.6509662
+  ],
+  [
+    "IRAM 30m school 2025<br />Granada; Granada, Spain",
+    37.1734995,
+    -3.5995337
+  ],
+  [
+    "BA and MSci in Natural Sciences (Astrophysics)<br />University of Cambridge; Cambridge, UK",
+    52.1975846,
+    0.1391537
   ]
 ];

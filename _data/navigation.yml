@@ -28,6 +28,9 @@ main:
 
   - title: "Gallery"
     url: /gallery/
+
+  - title: "Map"
+    url: /map/
     
   # - title: "CV"
   #   url: /cv-json/

@@ -1,10 +1,10 @@
-name: Scrape Talk Locations
+name: Scrape Places Locations
 
 on:
   push:
     paths:
-      - 'talks/**'
-      - 'talkmap.ipynb'
+      - '_places/**'
+      - 'talkmap.py'
 
 jobs:
   build:
@@ -20,17 +20,16 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install jupyter pandas requests beautifulsoup4 geopy  # Add other dependencies as needed
-        pip install getorg --upgrade
+        pip install python-frontmatter geopy getorg --upgrade
 
-    - name: Run Jupyter Notebook
+    - name: Run talkmap script
       run: |
-        jupyter nbconvert --to notebook --execute talkmap.ipynb --output talkmap_out.ipynb
+        python talkmap.py
 
     - name: Commit changes
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
-        git add .
-        git commit -m "Automated update of talk locations" || echo "No changes to commit"
+        git add talkmap/
+        git commit -m "Automated update of places map" || echo "No changes to commit"
         git push

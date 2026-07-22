@@ -16,6 +16,10 @@ output: True
     <div class="trip-card-title">IRAM 30m Telescope</div>
 </a>
 
-</div>
+<a class="trip-card" href="/gallery/leshouches/">
+    <img src="/images/gallery/leshouches/0_cover.JPG" alt="leshouches">
+    <div class="trip-card-title">École de Physique des Houches</div>
+</a>
 
+</div>
 

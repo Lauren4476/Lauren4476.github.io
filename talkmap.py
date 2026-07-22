@@ -1,21 +1,21 @@
-# Leaflet cluster map of talk locations
+# Leaflet cluster map of academic places (universities, jobs, conferences, visits)
 #
-# Run this from the _talks/ directory, which contains .md files of all your
-# talks. This scrapes the location YAML field from each .md file, geolocates it
-# with geopy/Nominatim, and uses the getorg library to output data, HTML, and
-# Javascript for a standalone cluster map. This is functionally the same as the
-# #talkmap Jupyter notebook.
+# Run this from the repo root. It reads .md files in _places/, which contains
+# one file per place with a `location` YAML field. This scrapes that field,
+# geolocates it with geopy/Nominatim, and uses the getorg library to output
+# data, HTML, and Javascript for a standalone cluster map.
 import frontmatter
 import glob
 import getorg
 from geopy import Nominatim
+from geopy.location import Location
 from geopy.exc import GeocoderTimedOut
 
 # Set the default timeout, in seconds
 TIMEOUT = 5
 
 # Collect the Markdown files
-g = glob.glob("_talks/*.md")
+g = glob.glob("_places/*.md")
 
 # Prepare to geolocate
 geocoder = Nominatim(user_agent="academicpages.github.io")
@@ -39,6 +39,18 @@ for file in g:
     venue = data['venue'].strip()
     location = data['location'].strip()
     description = f"{title}<br />{venue}; {location}"
+
+    # If the file supplies manual coordinates, use those directly and skip
+    # geocoding entirely. This is useful for remote sites (e.g. mountaintop
+    # observatories) that Nominatim doesn't recognize or geocodes incorrectly.
+    if 'latitude' in data and 'longitude' in data:
+        location_dict[description] = Location(
+            address=location,
+            point=(data['latitude'], data['longitude'], 0),
+            raw={}
+        )
+        print(description, location_dict[description])
+        continue
 
     # Geocode the location and report the status
     try:
