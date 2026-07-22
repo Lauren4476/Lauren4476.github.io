@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "Places I've visted"
+title: "Places I've visited"
 permalink: /map/
 author_profile: True
 output: True
