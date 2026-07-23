@@ -23,6 +23,23 @@ import string
 import html
 import os
 import re
+import urllib.parse
+
+def get_ads_url(b, clean_title):
+    """Build a link to the paper's ADS abstract page.
+
+    Prefers the ADS bibcode (Zotero stores this in the 'annotation' field
+    when items are imported from ADS), then falls back to the DOI, and
+    finally to an ADS title search if neither is available.
+    """
+    if "annotation" in b:
+        m = re.search(r"ADS Bibcode:\s*([^\s,}]+)", str(b["annotation"]))
+        if m:
+            bibcode = m.group(1).replace("\\&", "&")
+            return "https://ui.adsabs.harvard.edu/abs/" + urllib.parse.quote(bibcode, safe="") + "/abstract"
+    if "doi" in b and len(str(b["doi"])) > 3:
+        return "https://ui.adsabs.harvard.edu/abs/" + urllib.parse.quote(str(b["doi"]), safe="") + "/abstract"
+    return "https://ui.adsabs.harvard.edu/search/q=title%3A%22" + urllib.parse.quote(clean_title.replace("-", " ")) + "%22"
 
 #todo: incorporate different collection types rather than a catch all publications, requires other changes to template
 publist = {
@@ -147,7 +164,7 @@ for pubsource in publist:
             if url:
                 md += "\n[Access paper here](" + b["url"] + "){:target=\"_blank\"}\n" 
             else:
-                md += "\nUse [Google Scholar](https://scholar.google.com/scholar?q="+html.escape(clean_title.replace("-","+"))+"){:target=\"_blank\"} for full citation"
+                md += "\nSee on [ADS](" + get_ads_url(b, clean_title) + "){:target=\"_blank\"}"
 
             md_filename = os.path.basename(md_filename)
 
