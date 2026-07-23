@@ -25,6 +25,25 @@ import os
 import re
 import urllib.parse
 
+def clean_abstract_text(text):
+    """Strip common LaTeX artifacts (braces, escaped symbols, a few math macros)
+    left over in abstracts pulled from ADS/Zotero bibtex exports."""
+    text = str(text)
+    text = text.replace("\\$", "\u0001")  # protect literal escaped dollar signs
+    replacements = {
+        "{": "", "}": "",
+        "\\&": "&", "\\%": "%", "\\_": "_",
+        "\\sim": "~", "\\times": "x",
+        "\\lesssim": "≲", "\\lessequivlnt": "≲", "\\gtrsim": "≳",
+        "\\approx": "≈", "\\pm": "±",
+    }
+    for old, new in replacements.items():
+        text = text.replace(old, new)
+    text = text.replace("$", "")  # drop remaining math-mode delimiters
+    text = text.replace("\u0001", "$")  # restore literal dollar signs
+    return html_escape(text)
+
+
 def get_ads_url(b, clean_title):
     """Build a link to the paper's ADS abstract page.
 
@@ -142,6 +161,13 @@ for pubsource in publist:
                     md += "\nexcerpt: '" + html_escape(b["note"]) + "'"
                     note = True
 
+            abstract = False
+            if "abstract" in b.keys():
+                if len(str(b["abstract"])) > 5:
+                    print("Cleaning abstract for entry: ", bib_id)
+                    clean_abstract = clean_abstract_text(b["abstract"])
+                    abstract = True
+
             md += "\ndate: " + str(pub_date) 
 
             md += "\nvenue: '" + html_escape(venue) + "'"
@@ -161,10 +187,13 @@ for pubsource in publist:
             if note:
                 md += "\n" + html_escape(b["note"]) + "\n"
 
+            if abstract:
+                md += "\n**Abstract**\n\n" + clean_abstract + "\n"
+
             if url:
                 md += "\n[Access paper here](" + b["url"] + "){:target=\"_blank\"}\n" 
             else:
-                md += "\nSee on [ADS](" + get_ads_url(b, clean_title) + "){:target=\"_blank\"}"
+                md += "\nUse [ADS](" + get_ads_url(b, clean_title) + "){:target=\"_blank\"} for full citation"
 
             md_filename = os.path.basename(md_filename)
 
