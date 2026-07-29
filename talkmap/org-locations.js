@@ -20,6 +20,11 @@ var addressPoints = [
     11.6714052
   ],
   [
+    "COSPAR conference 2026<br />Fortezza da Basso; Viale Filippo Strozzi 1, Florence, Italy",
+    43.7807332,
+    11.248842
+  ],
+  [
     "IRAM 30m school 2025<br />Granada; Granada, Spain",
     37.1734995,
     -3.5995337

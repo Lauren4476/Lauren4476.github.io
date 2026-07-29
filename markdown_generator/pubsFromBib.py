@@ -44,6 +44,41 @@ def clean_abstract_text(text):
     return html_escape(text)
 
 
+_ACCENTS = {
+    "'": {"a": "á", "e": "é", "i": "í", "o": "ó", "u": "ú", "y": "ý",
+          "A": "Á", "E": "É", "I": "Í", "O": "Ó", "U": "Ú"},
+    "`": {"a": "à", "e": "è", "i": "ì", "o": "ò", "u": "ù",
+          "A": "À", "E": "È", "I": "Ì", "O": "Ò", "U": "Ù"},
+    '"': {"a": "ä", "e": "ë", "i": "ï", "o": "ö", "u": "ü",
+          "A": "Ä", "E": "Ë", "I": "Ï", "O": "Ö", "U": "Ü"},
+    "^": {"a": "â", "e": "ê", "i": "î", "o": "ô", "u": "û",
+          "A": "Â", "E": "Ê", "I": "Î", "O": "Ô", "U": "Û"},
+    "~": {"n": "ñ", "o": "õ", "a": "ã", "N": "Ñ", "O": "Õ", "A": "Ã"},
+    "c": {"c": "ç", "C": "Ç"},
+    "v": {"c": "č", "s": "š", "z": "ž", "C": "Č", "S": "Š", "Z": "Ž"},
+    "H": {"o": "ő", "u": "ű", "O": "Ő", "U": "Ű"},
+}
+
+
+def clean_latex_name(text):
+    """Convert a LaTeX-escaped bibtex name fragment (e.g. from an ADS/Zotero
+    export) into plain unicode, e.g. "{\\relax Th}" -> "Th", "Cort{\\'e}s" -> "Cortés"."""
+    text = str(text)
+    text = re.sub(r"\\relax\s*", "", text)
+
+    def repl_accent(m):
+        cmd, ch = m.group(1), m.group(2)
+        return _ACCENTS.get(cmd, {}).get(ch, ch)
+
+    text = re.sub(r"\\([\'`\"^~cvH])\{?([a-zA-Z])\}?", repl_accent, text)
+    text = text.replace("\\o", "ø").replace("\\O", "Ø")
+    text = text.replace("\\ss", "ß").replace("\\aa", "å").replace("\\AA", "Å")
+    text = text.replace("\\&", "&")
+    text = html.unescape(text)
+    text = text.replace("{", "").replace("}", "")
+    return text.strip()
+
+
 def get_ads_url(b, clean_title):
     """Build a link to the paper's ADS abstract page.
 
@@ -90,6 +125,10 @@ def html_escape(text):
     return "".join(html_escape_table.get(c,c) for c in text)
 
 
+os.makedirs("../_publications", exist_ok=True)
+
+os.makedirs(os.path.join("..", "_publications"), exist_ok=True)
+
 for pubsource in publist:
     parser = bibtex.Parser()
     bibdata = parser.parse_file(publist[pubsource]["file"])
@@ -133,10 +172,25 @@ for pubsource in publist:
 
             #Build Citation from text
             citation = ""
+            authors = bibdata.entries[bib_id].persons["author"]
 
             #citation authors - todo - add highlighting for primary author?
-            for author in bibdata.entries[bib_id].persons["author"]:
-                citation = citation+" "+author.first_names[0]+" "+author.last_names[0]+", "
+            for author in authors:
+                first = clean_latex_name(author.first_names[0]) if author.first_names else ""
+                last = clean_latex_name(author.last_names[0])
+                citation = citation+" "+(first+" "+last).strip()+", "
+
+            #short "A. Author, B. Author, C. Author et al. YEAR" citation for the top of the page
+            short_parts = []
+            for author in authors[:3]:
+                first = clean_latex_name(author.first_names[0]) if author.first_names else ""
+                last = clean_latex_name(author.last_names[0])
+                initial = (first[0] + ".") if first else ""
+                short_parts.append((initial + " " + last).strip())
+            if len(authors) > 3:
+                citation_short = ", ".join(short_parts) + " et al. " + pub_year
+            else:
+                citation_short = ", ".join(short_parts) + " " + pub_year
 
             #citation title
             citation = citation + "\"" + html_escape(b["title"].replace("{", "").replace("}","").replace("\\","")) + ".\""
@@ -178,6 +232,10 @@ for pubsource in publist:
                     md += "\npaperurl: '" + b["url"] + "'"
                     url = True
 
+            md += "\ncitation_short: '" + html_escape(citation_short) + "'"
+
+            md += "\nadsurl: '" + get_ads_url(b, clean_title) + "'"
+
             md += "\ncitation: '" + html_escape(citation) + "'"
 
             md += "\n---"
@@ -191,16 +249,17 @@ for pubsource in publist:
                 md += "\n**Abstract**\n\n" + clean_abstract + "\n"
 
             if url:
-                md += "\n[Access paper here](" + b["url"] + "){:target=\"_blank\"}\n" 
-            else:
-                md += "\nUse [ADS](" + get_ads_url(b, clean_title) + "){:target=\"_blank\"} for full citation"
+                md += "\n[Access paper here](" + b["url"] + "){:target=\"_blank\"}\n"
 
             md_filename = os.path.basename(md_filename)
+            out_path = os.path.abspath(os.path.join("..", "_publications", md_filename))
 
-            with open("../_publications/" + md_filename, 'w', encoding="utf-8") as f:
+            with open(out_path, 'w', encoding="utf-8") as f:
                 f.write(md)
             print(f'SUCCESSFULLY PARSED {bib_id}: \"', b["title"][:60],"..."*(len(b['title'])>60),"\"")
+            print(f'  -> wrote to: {out_path}')
         # field may not exist for a reference
         except KeyError as e:
-            print(f'WARNING Missing Expected Field {e} from entry {bib_id}: \"', b["title"][:30],"..."*(len(b['title'])>30),"\"")
+            title_preview = str(b["title"])[:30] + ("..." if len(str(b.get("title", ""))) > 30 else "") if "title" in b else "(no title field found)"
+            print(f'WARNING Missing Expected Field {e} from entry {bib_id}: "{title_preview}" -- available fields: {list(b.keys())}')
             continue
