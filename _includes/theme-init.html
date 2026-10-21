@@ -1,0 +1,14 @@
+<!-- Apply the saved (or system) theme before the first paint, so dark mode doesn't flash white on page load.
+     Mirrors setTheme() in assets/js/_main.js, which runs later and also updates the toggle icon. -->
+<script>
+  (function () {
+    var theme = null;
+    try { theme = localStorage.getItem("theme"); } catch (e) {}
+    if (theme !== "dark" && theme !== "light") {
+      theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    if (theme === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+  })();
+</script>
