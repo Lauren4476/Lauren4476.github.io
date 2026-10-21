@@ -1,0 +1,79 @@
+/* --- Publications list --- */
+
+/* gradient accent bar beside each paper */
+.pub-item {
+  padding-left: 1.2em;
+  margin-bottom: 2em;
+  border-left: 3px solid;
+  border-image: linear-gradient(180deg, #7c3aed, #3b82f6) 1;
+
+  .archive__item-title {
+    margin-top: 0;
+  }
+}
+
+/* titles aren't links, so don't underline them on hover */
+.archive__item:hover .archive__item-title.pub-title {
+  text-decoration: none;
+}
+
+.archive__item-title.pub-title {
+  font-size: $type-size-5;
+  line-height: 1.4;
+}
+
+/* p.* selectors so these beat the theme's .page__content p margins */
+p.pub-authors {
+  margin: 0 0 0.25em;
+  font-size: $type-size-6;
+}
+
+p.pub-venue {
+  margin: 0 0 0.6em;
+  font-size: $type-size-6;
+}
+
+p.pub-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin: 0 0 0.6em;
+
+  a,
+  a:visited {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    padding: 0.25em 0.8em;
+    font-family: $sans-serif;
+    font-size: $type-size-7;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--global-pill-text-color);
+    background-color: var(--global-pill-bg-color);
+    border-radius: 999px;
+    transition: $global-transition;
+  }
+
+  a:hover {
+    color: #fff;
+    background-color: var(--global-base-color);
+  }
+}
+
+.pub-abstract {
+  margin-bottom: 1.5em;
+
+  summary {
+    cursor: pointer;
+    font-family: $sans-serif;
+    font-size: $type-size-6;
+    font-weight: bold;
+    color: var(--global-text-color-light);
+  }
+
+  p {
+    margin: 0.5em 0 0;
+    font-size: $type-size-6;
+  }
+}

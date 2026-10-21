@@ -14,6 +14,10 @@ layout: default
   {% endunless %}
 {% endif %}
 
+{% if page.url == "/" %}
+  {% include home-intro.html %}
+{% endif %}
+
 <div id="main" role="main">
   {% include sidebar.html %}
 
@@ -27,12 +31,6 @@ layout: default
       {% unless page.header.overlay_color or page.header.overlay_image %}
         <header>
           {% if page.title %}<h1 class="page__title" itemprop="headline">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
-          {% if page.citation_short %}
-            <p class="page__citation" style="font-size: 1.05em; margin-top: 0;">{{ page.citation_short }}</p>
-          {% endif %}
-          {% if page.adsurl %}
-            <p class="page__ads-link" style="margin-top: -0.5em;"><a href="{{ page.adsurl }}" target="_blank" rel="noopener noreferrer">View on ADS</a></p>
-          {% endif %}
           {% if page.read_time %}
             <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
           {% endif %}

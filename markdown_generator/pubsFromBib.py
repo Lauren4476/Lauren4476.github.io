@@ -95,6 +95,22 @@ def get_ads_url(b, clean_title):
         return "https://ui.adsabs.harvard.edu/abs/" + urllib.parse.quote(str(b["doi"]), safe="") + "/abstract"
     return "https://ui.adsabs.harvard.edu/search/q=title%3A%22" + urllib.parse.quote(clean_title.replace("-", " ")) + "%22"
 
+
+def get_arxiv_id(b):
+    """Find the paper's arXiv identifier.
+
+    Uses the 'eprint' field from an ADS bibtex export if present, otherwise
+    looks for an "arXiv: 2602.17177" line in the Zotero 'Extra' field
+    (exported as 'annotation'). Returns None if neither is available.
+    """
+    if "eprint" in b and len(str(b["eprint"])) > 3:
+        return str(b["eprint"]).replace("arXiv:", "").strip()
+    if "annotation" in b:
+        m = re.search(r"arXiv:\s*([^\s,}]+)", str(b["annotation"]))
+        if m:
+            return m.group(1)
+    return None
+
 #todo: incorporate different collection types rather than a catch all publications, requires other changes to template
 publist = {
     "proceeding": {
@@ -175,10 +191,12 @@ for pubsource in publist:
             authors = bibdata.entries[bib_id].persons["author"]
 
             #citation authors - todo - add highlighting for primary author?
+            author_names = []
             for author in authors:
                 first = clean_latex_name(author.first_names[0]) if author.first_names else ""
                 last = clean_latex_name(author.last_names[0])
                 citation = citation+" "+(first+" "+last).strip()+", "
+                author_names.append((first+" "+last).strip())
 
             #short "A. Author, B. Author, C. Author et al. YEAR" citation for the top of the page
             short_parts = []
@@ -225,7 +243,22 @@ for pubsource in publist:
             md += "\ndate: " + str(pub_date) 
 
             md += "\nvenue: '" + html_escape(venue) + "'"
-            
+
+            if "volume" in b.keys():
+                md += "\nvolume: '" + html_escape(str(b["volume"])) + "'"
+
+            if "pages" in b.keys():
+                md += "\npages: '" + html_escape(str(b["pages"])) + "'"
+
+            md += "\nauthors: '" + html_escape(", ".join(author_names)) + "'"
+
+            if "doi" in b.keys() and len(str(b["doi"])) > 3:
+                md += "\ndoi: '" + str(b["doi"]) + "'"
+
+            arxiv_id = get_arxiv_id(b)
+            if arxiv_id:
+                md += "\narxiv: '" + arxiv_id + "'"
+
             url = False
             if "url" in b.keys():
                 if len(str(b["url"])) > 5:

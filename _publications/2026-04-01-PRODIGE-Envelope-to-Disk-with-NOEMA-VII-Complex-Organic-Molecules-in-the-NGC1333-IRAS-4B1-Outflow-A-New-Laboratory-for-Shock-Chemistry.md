@@ -4,6 +4,11 @@ collection: publications
 permalink: /publication/2026-04-01-PRODIGE-Envelope-to-Disk-with-NOEMA-VII-Complex-Organic-Molecules-in-the-NGC1333-IRAS-4B1-Outflow-A-New-Laboratory-for-Shock-Chemistry
 date: 2026-04-01
 venue: 'Astronomy and Astrophysics'
+volume: '708'
+pages: 'A315'
+authors: 'L. Busch, J. Pineda, P. Caselli, D. Segura-Cox, S. Narayanan, C. Gieser, M. Maureira, T.-H. Hsieh, Y. Lin, M. Valdivia-Mena, L. Bouscasse, Th. Henning, D. Semenov, A. Fuente, Y.-R. Chou, L. Mason, P. Cortés, L. Looney, I. Stephens, M. Tafalla, A. Dutrey, W. Kwon, P. Saha'
+doi: '10.1051/0004-6361/202658979'
+arxiv: '2602.17177'
 citation_short: 'L. Busch, J. Pineda, P. Caselli et al. 2026'
 adsurl: 'https://ui.adsabs.harvard.edu/abs/2026A%26A...708A.315B/abstract'
 citation: ' L. Busch,  J. Pineda,  P. Caselli,  D. Segura-Cox,  S. Narayanan,  C. Gieser,  M. Maureira,  T.-H. Hsieh,  Y. Lin,  M. Valdivia-Mena,  L. Bouscasse,  Th. Henning,  D. Semenov,  A. Fuente,  Y.-R. Chou,  L. Mason,  P. Cortés,  L. Looney,  I. Stephens,  M. Tafalla,  A. Dutrey,  W. Kwon,  P. Saha, &quot;PRODIGE - Envelope to Disk with NOEMA: VII. (Complex) Organic Molecules in the NGC1333 IRAS 4B1 Outflow: A New Laboratory for Shock Chemistry.&quot; Astronomy and Astrophysics, 2026.'

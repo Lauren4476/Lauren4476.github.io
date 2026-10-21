@@ -1,0 +1,31 @@
+{% comment %}
+  Authors, venue and link buttons for a publication.
+  Usage: {% include publication-info.html pub=post %}
+{% endcomment %}
+
+{% assign pub = include.pub %}
+{% assign me = site.author.publication_name %}
+{% capture me_bold %}<strong>{{ me }}</strong>{% endcapture %}
+
+{% if pub.authors %}
+  {% assign names = pub.authors | split: ", " %}
+  {% if names.size <= 4 %}
+    {% assign author_list = pub.authors %}
+  {% else %}
+    {% capture author_list %}{% for name in names limit: 3 %}{{ name }}, {% endfor %}et al.{% endcapture %}
+    {% assign shown = author_list | split: ", " %}
+    {% if me and names contains me %}{% unless shown contains me %}
+      {% capture author_list %}{{ author_list }} (incl. {{ me }}){% endcapture %}
+    {% endunless %}{% endif %}
+  {% endif %}
+  <p class="pub-authors">{% if me %}{{ author_list | replace: me, me_bold }}{% else %}{{ author_list }}{% endif %}</p>
+{% endif %}
+
+<p class="pub-venue"><em>{{ pub.venue }}</em>{% if pub.volume %}, {{ pub.volume }}{% endif %}{% if pub.pages %}, {{ pub.pages }}{% endif %} ({{ pub.date | date: "%Y" }})</p>
+
+<p class="pub-links">
+  {% if pub.adsurl %}<a href="{{ pub.adsurl }}" target="_blank" rel="noopener noreferrer"><i class="ai ai-ads" aria-hidden="true"></i>ADS</a>{% endif %}
+  {% if pub.arxiv %}<a href="https://arxiv.org/abs/{{ pub.arxiv }}" target="_blank" rel="noopener noreferrer"><i class="ai ai-arxiv" aria-hidden="true"></i>arXiv</a>{% endif %}
+  {% if pub.doi %}<a href="https://doi.org/{{ pub.doi }}" target="_blank" rel="noopener noreferrer"><i class="ai ai-doi" aria-hidden="true"></i>DOI</a>{% endif %}
+  {% if pub.paperurl %}<a href="{{ pub.paperurl }}" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i>PDF</a>{% endif %}
+</p>

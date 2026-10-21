@@ -35,20 +35,31 @@ $sidebar-screen-min-width   : 1024px;
 
 /* Dark theme for the site */
 html[data-theme="dark"] {
-    --global-base-color                 : #{$background};
-    --global-bg-color                   : #{$background};
-    --global-footer-bg-color            : #{$background};
-    --global-border-color               : #{$light-gray};
-    --global-dark-border-color          : #{$background-light};
-    --global-code-background-color      : #fafafa;
-    --global-code-text-color            : #{$darker-gray};
-    --global-fig-caption-color          : #{$light-gray};
-    --global-link-color                 : #{$link};
-    --global-link-color-hover           : #{$link-dark};
-    --global-link-color-visited         : #{$link-light};
-    --global-masthead-link-color        : #{$text};
-    --global-masthead-link-color-hover  : #{$background-light};
-    --global-text-color                 : #{$text};
-    --global-text-color-light           : #{$light-gray};
-    --global-thead-color                : #{$background-lighter};
+    --global-base-color                 : #8b7cff;
+    --global-bg-color                   : #14122b;
+    --global-footer-bg-color            : #0c0b1d;
+    --global-border-color               : #2c2852;
+    --global-dark-border-color          : #3a3566;
+    --global-code-background-color      : #1e1b3d;
+    --global-code-text-color            : #e7e5f7;
+    --global-fig-caption-color          : #a09cc4;
+    --global-link-color                 : #a593ff;
+    --global-link-color-hover           : #c9bfff;
+    --global-link-color-visited         : #a593ff;
+    --global-masthead-link-color        : #e7e5f7;
+    --global-masthead-link-color-hover  : #a593ff;
+    --global-text-color                 : #e7e5f7;
+    --global-text-color-light           : #a09cc4;
+    --global-thead-color                : #221f45;
+
+    /* additions for the custom design (see layout/_custom.scss) */
+    --global-masthead-bg-color          : rgba(20, 18, 43, 0.6);
+    --global-accent-gradient            : linear-gradient(90deg, #8b5cf6, #60a5fa);
+    --global-link-underline-color       : rgba(165, 147, 255, 0.4);
+    --global-pill-bg-color              : rgba(165, 147, 255, 0.14);
+    --global-pill-text-color            : #cfc6ff;
+    --global-footer-text-color          : #a09cc4;
+    --global-footer-link-color          : #d9d3ff;
+    --global-avatar-shadow              : 0 8px 24px rgba(0, 0, 0, 0.35);
+    --global-dropdown-bg-color          : #221f45;
 }

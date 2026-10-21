@@ -24,8 +24,9 @@ author:
   # Biographic information
   avatar           : "profile_lauren_sq.jpg"
   name             : "Lauren Mason"
+  publication_name : "L. Mason" # how your name appears in author lists; shown in bold on the Publications page
   pronouns         : "she/her"  
-  bio              : "PhD student at Max Planck Institute for Extraterrestrial Physics (MPE)."
+  bio              : "PhD student at Max Planck Institute for Extraterrestrial Physics"
   location         : "Munich, Germany"
   employer         : #
   uri              : # URL
@@ -227,7 +228,7 @@ collections:
     output: true
     permalink: /:collection/:path/
   publications:
-    output: true
+    output: false # no individual pages; everything is shown on /publications/
     permalink: /:collection/:path/
   portfolio:
     output: true
