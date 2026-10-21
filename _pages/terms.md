@@ -1,35 +1,15 @@
 ---
-permalink: /terms/
-title: "Terms and Privacy Policy"
-modified: 07-09-2025
+permalink: /privacy/
+title: "Privacy"
+modified: 2026-10-21
+redirect_from:
+  - /terms/
 ---
 
-{% include base_path %}
-{% include toc %}
+This site does not use cookies, analytics or any other tracking, and it has no comments or forms.
 
-## Privacy Policy
+* **Hosting:** the site is hosted on [GitHub Pages](https://pages.github.com/). GitHub logs visitors' IP addresses for security purposes, as described in the [GitHub Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement).
+* **Third-party content:** some scripts are loaded from [cdnjs](https://cdnjs.com/) and [jsDelivr](https://www.jsdelivr.com/), and the map on the [Places](/map/) page uses tiles from [OpenStreetMap](https://www.openstreetmap.org/). These services receive your IP address when your browser requests these files.
+* **Theme preference:** if you switch between light and dark mode, your choice is saved in your own browser's local storage and never sent anywhere.
 
-The privacy of my visitors is extremely important. This Privacy Policy outlines the types of personal information that is received and collected and how it is used.
-
-First and foremost, I will never share your email address or any other personal information to anyone without your direct consent.
-
-### Log Files
-
-Like many other websites, this site uses log files to help learn about when, from where, and how often traffic flows to this site. The information in these log files include:
-
-* Internet Protocol addresses (IP)
-* Types of browser
-* Internet Service Provider (ISP)
-* Date and time stamp
-* Referring and exit pages
-* Number of clicks
-
-All of this information is not linked to anything that is personally identifiable.
-
-### Cookies and Web Beacons
-
-When you visit this site "convenience" cookies are stored on your computer when you submit a comment to help you log in faster to [Disqus](http://disqus.com) the next time you leave a comment.
-
-Third-party advertisers may also place and read cookies on your browser and/or use web beacons to collect information. This site has no access or control over these cookies. You should review the respective privacy policies on any and all third-party ad servers for more information regarding their practices and how to opt-out.
-
-If you wish to disable cookies, you may do so through your web browser options. Instructions for doing so can be found on the specific web browsers' websites.
+Questions? Email me at [{{ site.author.email }}](mailto:{{ site.author.email }}).

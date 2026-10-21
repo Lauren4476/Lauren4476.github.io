@@ -15,6 +15,11 @@ var addressPoints = [
     -3.3927
   ],
   [
+    "AG Meeting 2026<br />TUM; Boltzmannstra\u00dfe 15, 85748 Garching bei M\u00fcnchen",
+    48.2658488,
+    11.6706091
+  ],
+  [
     "PhD at MPE<br />Max-Planck-Institut f\u00fcr Extraterrestrische Physik; Garching Forschungszentrum, Germany",
     48.2647408,
     11.6714052

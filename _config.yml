@@ -12,7 +12,7 @@ site_theme               : "default"
 title                    : "Lauren Mason"
 title_separator          : "-"
 name                     : &name "Lauren Mason"
-description              : &description "My personal website, built with Jekyll and the AcademicPages template."
+description              : &description "Lauren Mason – PhD student studying streamers and asymmetries in star formation."
 url                      : https://Lauren4476.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io" or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "Lauren4476/Lauren4476.github.io"
@@ -27,17 +27,18 @@ author:
   pronouns         : "she/her"  
   bio              : "PhD student at Max Planck Institute for Extraterrestrial Physics (MPE)."
   location         : "Munich, Germany"
-  employer         : # "MPE"
+  employer         : #
   uri              : # URL
   email            : "lmason@mpe.mpg.de" 
 
   # Academic websites
   academia         : # URL
+  ads              : "https://ui.adsabs.harvard.edu/public-libraries/AlPEj12iRvKQj0ONqK_i9g" # URL of public NASA ADS library
   arxiv            : # URL - Update with the correct link to your profile
   googlescholar    : # URL"https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
   inspire-hep      : # URL
   impactstory      : # URL
-  orcid            : URL "https://orcid.org/0009-0005-9178-6751
+  orcid            : "https://orcid.org/0009-0005-9178-6751"
   semantic         : # URL
   pubmed           : # URL "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   researchgate     : # URL
@@ -176,16 +177,21 @@ exclude:
   - Capfile
   - config
   - Dockerfile
+  - docker-compose.yaml
   - Gemfile
   - Gruntfile.js
   - gulpfile.js
   - LICENSE
   - local
   - log
+  - markdown_generator
   - node_modules
   - package.json*
   - Rakefile
   - README
+  - scripts
+  - talkmap.py
+  - "*.ipynb"
   - tmp
   - vendor
 keep_files:
@@ -228,6 +234,9 @@ collections:
     permalink: /:collection/:path/
   talks:
     output: true
+    permalink: /:collection/:path/
+  places:
+    output: false
     permalink: /:collection/:path/
 
 
@@ -355,21 +364,3 @@ compress_html:
   clippings: all
   ignore:
     envs: development
-
-
-collections:
-  teaching:
-    output: true
-    permalink: /:collection/:path/
-  publications:
-    output: true
-    permalink: /:collection/:path/
-  portfolio:
-    output: true
-    permalink: /:collection/:path/
-  talks:
-    output: true
-    permalink: /:collection/:path/
-  places:
-    output: false
-    permalink: /:collection/:path/
