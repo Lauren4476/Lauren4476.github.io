@@ -8,12 +8,13 @@
 {% capture me_bold %}<strong>{{ me }}</strong>{% endcapture %}
 
 {% if pub.authors %}
-  {% assign names = pub.authors | split: ", " %}
+  {% comment %}authors are stored as "Surname, F. M.; Surname, F." (see markdown_generator/pubsFromBib.py){% endcomment %}
+  {% assign names = pub.authors | split: "; " %}
   {% if names.size <= 4 %}
-    {% assign author_list = pub.authors %}
+    {% assign author_list = names | join: ", " %}
   {% else %}
-    {% capture author_list %}{% for name in names limit: 3 %}{{ name }}, {% endfor %}et al.{% endcapture %}
-    {% assign shown = author_list | split: ", " %}
+    {% assign shown = names | slice: 0, 3 %}
+    {% capture author_list %}{{ shown | join: ", " }}, et al.{% endcapture %}
     {% if me and names contains me %}{% unless shown contains me %}
       {% capture author_list %}{{ author_list }} (incl. {{ me }}){% endcapture %}
     {% endunless %}{% endif %}

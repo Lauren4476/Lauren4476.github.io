@@ -24,7 +24,7 @@ author:
   # Biographic information
   avatar           : "profile_lauren_sq.jpg"
   name             : "Lauren Mason"
-  publication_name : "L. Mason" # how your name appears in author lists; shown in bold on the Publications page
+  publication_name : "Mason, L." # how your name appears in author lists; shown in bold on the Publications page
   pronouns         : "she/her"  
   bio              : "PhD student at Max Planck Institute for Extraterrestrial Physics"
   location         : "Munich, Germany"

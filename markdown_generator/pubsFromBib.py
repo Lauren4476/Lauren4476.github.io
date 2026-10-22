@@ -79,6 +79,19 @@ def clean_latex_name(text):
     return text.strip()
 
 
+def surname_first(person):
+    """Format a pybtex Person as "Surname, F. M." using all first and middle names,
+    e.g. "Busch, L. A.", "Hsieh, T.-H.", "Henning, Th.". Names that are already
+    abbreviated are kept as given; full names are reduced to an initial."""
+    surname = " ".join(clean_latex_name(n) for n in person.prelast_names + person.last_names)
+    initials = []
+    for name in person.first_names + person.middle_names:
+        name = clean_latex_name(name)
+        parts = [p for p in name.split("-") if p]
+        initials.append("-".join(p if p.endswith(".") else p[0] + "." for p in parts))
+    return (surname + ", " + " ".join(initials)) if initials else surname
+
+
 def get_ads_url(b, clean_title):
     """Build a link to the paper's ADS abstract page.
 
@@ -196,7 +209,7 @@ for pubsource in publist:
                 first = clean_latex_name(author.first_names[0]) if author.first_names else ""
                 last = clean_latex_name(author.last_names[0])
                 citation = citation+" "+(first+" "+last).strip()+", "
-                author_names.append((first+" "+last).strip())
+                author_names.append(surname_first(author))
 
             #short "A. Author, B. Author, C. Author et al. YEAR" citation for the top of the page
             short_parts = []
@@ -250,7 +263,8 @@ for pubsource in publist:
             if "pages" in b.keys():
                 md += "\npages: '" + html_escape(str(b["pages"])) + "'"
 
-            md += "\nauthors: '" + html_escape(", ".join(author_names)) + "'"
+            #authors separated by "; " since each name contains a comma
+            md += "\nauthors: '" + html_escape("; ".join(author_names)) + "'"
 
             if "doi" in b.keys() and len(str(b["doi"])) > 3:
                 md += "\ndoi: '" + str(b["doi"]) + "'"

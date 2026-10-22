@@ -6,7 +6,7 @@ date: 2026-04-01
 venue: 'Astronomy and Astrophysics'
 volume: '708'
 pages: 'A315'
-authors: 'L. Busch, J. Pineda, P. Caselli, D. Segura-Cox, S. Narayanan, C. Gieser, M. Maureira, T.-H. Hsieh, Y. Lin, M. Valdivia-Mena, L. Bouscasse, Th. Henning, D. Semenov, A. Fuente, Y.-R. Chou, L. Mason, P. Cortés, L. Looney, I. Stephens, M. Tafalla, A. Dutrey, W. Kwon, P. Saha'
+authors: 'Busch, L. A.; Pineda, J. E.; Caselli, P.; Segura-Cox, D. M.; Narayanan, S.; Gieser, C.; Maureira, M. J.; Hsieh, T.-H.; Lin, Y.; Valdivia-Mena, M. T.; Bouscasse, L.; Henning, Th.; Semenov, D.; Fuente, A.; Chou, Y.-R.; Mason, L.; Cortés, P. C.; Looney, L. W.; Stephens, I. W.; Tafalla, M.; Dutrey, A.; Kwon, W.; Saha, P.'
 doi: '10.1051/0004-6361/202658979'
 arxiv: '2602.17177'
 citation_short: 'L. Busch, J. Pineda, P. Caselli et al. 2026'
